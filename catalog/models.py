@@ -10,7 +10,7 @@ class Category(models.Model):
     description = models.TextField(verbose_name='описание', **NULLABLE)
 
     def __str__(self):
-        return f'{self.category_name} - {self.description}'
+        return f'{self.id} : {self.category_name}'
 
     class Meta:
         verbose_name = 'категория'
@@ -20,7 +20,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     prod_name = models.CharField(max_length=100, verbose_name='наименование')
-    description = models.TextField(verbose_name='описание', default='описание отсутсвует')
+    description = models.TextField(verbose_name='описание', default='описание отсутствует')
     image = models.ImageField(upload_to='products/', verbose_name='изображение', **NULLABLE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='цена')
@@ -28,7 +28,7 @@ class Product(models.Model):
     date_change = models.DateField(verbose_name='дата изменения', auto_now=True)
 
     def __str__(self):
-        return f'{self.prod_name} - {self.price}'
+        return f'{self.prod_name} - {self.price} : {self.category}'
 
     class Meta:
         verbose_name = 'продукт'
