@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="row text-center">
+        <div class="col-md-8">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Категория: {{object.category}}</h4>
+                </div>
+                <img class="card-img-top" src="{{ object.image|mymedia }}"
+                 alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="my-0 font-weight-normal">{{object.prod_name|title}}</h4>
+                    <h1 class="card-title pricing-card-title">{{object.price}}</h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- {{object.description}}</li>
+                    </ul>
+                    <p class="card-text">Дата создания:{{ object.date_created }}     Дата изменения {{ object.date_change }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
